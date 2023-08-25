@@ -5,6 +5,34 @@ using namespace std;
 class Solution
 {
 public:
+    void countPaths(int i, int j, int m, int n, long long &count)
+    {
+        if (i == m - 1 && j == n - 1)
+        {
+            count++;
+            return;
+        }
+
+        if (i >= m || j >= n)
+            return;
+
+        // down move
+        countPaths(i + 1, j, m, n, count);
+
+        // right move
+        countPaths(i, j + 1, m, n, count);
+    }
+
+    long long numberOfPaths(int m, int n)
+    {
+        // Code Here
+        long long count = 0;
+
+        countPaths(0, 0, m, n, count);
+
+        return count;
+    }
+
     void func(int i, int j, int &m, int &n, int &count, int iterator)
     {
         // cout << endl
